@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Matcher</title>
+</head>
+<body>
+    <h1>Regex Matcher</h1>
+
+    <form method="post">
+        <label for="regex_pattern">Regex Pattern:</label>
+        <input type="text" name="regex_pattern" value="{{ regex_pattern }}" required>
+        
+        <label for="input_text">Input Text:</label>
+        <textarea name="input_text" rows="4" required>{{ input_text }}</textarea>
+        
+        <button type="submit">Match</button>
+    </form>
+
+    {% if match_positions %}
+        <h2>Matches:</h2>
+        <ul>
+            {% for start, end in match_positions %}
+                <li>Match at positions {{ start }} to {{ end }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h2>Saved Patterns:</h2>
+    <ul>
+        {% for pattern_name, regex_pattern in saved_patterns.items() %}
+            <li>{{ pattern_name }}: {{ regex_pattern }}</li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" action="{{ url_for('save_pattern') }}">
+        <label for="pattern_name">Pattern Name:</label>
+        <input type="text" name="pattern_name" required>
+        
+        <label for="regex_pattern">Regex Pattern:</label>
+        <input type="text" name="regex_pattern" required>
+        
+        <button type="submit">Save Pattern</button>
+    </form>
+</body>
+</html>
