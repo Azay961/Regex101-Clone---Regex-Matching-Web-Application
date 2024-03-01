@@ -7,17 +7,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form action="route1.html" method="get">
-        <button type="submit">Save</button>
-    </form>
-
-    <form action="route2.html" method="get">
-        <button type="submit">View</button>
-    </form>
-
-    <form action="login.html" method="get">
-        <button type="submit">Login</button>
-    </form>
+    {{msg}}
+    <!-- Login/logout button-->
+    {% if username%}        
+        <form action="/">
+            {{username}}<button type="submit">Logout</button><br>
+        </form>
+        {% if matches %}
+        <form action="/save">
+            <button type="submit" name="action" value="save">Save</button>
+        </form>
+        {% endif %}
+        <form action="/view">
+            <button type="submit" name="action" value="view">View</button> 
+        </form> 
+    {% else%}
+        <form action="/login">
+            <button type="submit">Login</button>
+        </form>
+    {% endif%}
+    <!-- -------------- -->
+  
 <!------------ Email validation ------------->
     <form action="/mail_validity" method="post">
         <label for="username">Email:</label><br>

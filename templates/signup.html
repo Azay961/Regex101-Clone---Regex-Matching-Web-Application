@@ -8,16 +8,16 @@
 <body>
     <div class="container">
         <h2>Signup</h2>
-        <form action="/signup" method="post">
+        <form action="/home" method="post">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" required><br>
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" required><br>
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password" required><br>
-            <input type="submit" value="Signup">
+            <input type="submit" name="action" value="Signup">
         </form>
-        <p>Already have an account? <a href="#login">Login</a></p>
+        <p>Already have an account? <a href="/login">Login</a></p>
         </div>
 </body>
 </html>
