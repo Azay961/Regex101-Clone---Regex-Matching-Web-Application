@@ -97,8 +97,6 @@ def save_pattern():
     if current_pattern:
         user_data[current_user]['patterns'].append(current_pattern)
         return "Saved successfully"
-    else:
-        return "Enter pattern first"
 
 @app.route('/view', methods=["GET", "POST"])
 def view():
