@@ -6,8 +6,6 @@ app.secret_key = "ajay_1240153"
 
 user_data = {
     'user@gmail.com': {'password': 'password1', 'patterns': ['pattern1', 'pattern1a']},
-    'user2': {'password': 'password2', 'patterns': ['pattern2', 'pattern2a']},
-    'user3': {'password': 'password3', 'patterns': ['pattern3', 'pattern3a']},
 }
 current_user = ''
 current_pattern =''
@@ -87,11 +85,12 @@ def check_mail():
     if request.method == "POST":
         email = request.form['username']
         try:
-            match = re.findall(r"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$", email)
+            email_pattern = re.compile(r"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$")
+            match = email_pattern.findall(email)
         except re.error:
             match = None
-    return render_template('validate_mail.html', match=match)
-
+        return render_template('validate_mail.html', match=match, username = email)
+    return render_template('validate_mail.html')
 @app.route('/save', methods=["GET", "POST"])
 def save_pattern():
     if current_pattern:

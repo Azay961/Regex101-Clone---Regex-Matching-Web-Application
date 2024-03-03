@@ -28,17 +28,18 @@
     {% endif%}
     <!-- -------------- -->
   
-<!------------ Email validation ------------->
-    <form action="/mail_validity" method="post">
-        <label for="username">Email:</label><br>
-        <input type="text" name="username" placeholder="Enter email here">
+<!------------ Email validation button------------->
+<section class="email_validation" methods="get">
+    <form action="/mail_validity">
         <button type="submit">Validate mail</button>
     </form>
+</section>
+
 <!-- -------------------------------------- -->
 
 <!-- Taking inputs -->
-    <h1>Regex Matcher</h1>
-
+<section class="input_section">
+    <h1 class="section_titile">Regex Matcher</h1>
     <form action="/results" method="post">
         <label for="regex_pattern">Regex Pattern:</label><br>
         <input type="text" name="regex_pattern" value="{{ regex_pattern }}" required><br>
@@ -48,10 +49,11 @@
     
         <button type="submit">Match</button>
     </form>
-    <!-- --------------------- -->
+</section>
+<!-- --------------------- -->
 
     <!-- Printing Output -->
-    
+<section class="output_section">
     {% if matches %}
     <h2>Matches:</h2>
     <h3>Total matched: {{ matches|length }}</h3>
@@ -63,6 +65,7 @@
             {% endfor %}
         </ul>
     {% endif %}
+</section>
 <!-- ------------------ -->
 </body>
 </html>
