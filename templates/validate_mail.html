@@ -6,15 +6,17 @@
     <title>Check mail</title>
 </head>
 <body>
-    {% if match %}
-        <p>Valid mail</p>
-    {% else %}
-        <p>Invalid</p>
-    {% endif %}
-
-    <form action="/">
-        <button type="submit">Home</button>
+    <form action="/mail_validity" method="post">
+        <label for="username">Email:</label><br>
+        <input type="text" name="username" placeholder="Enter email here" required>
+        <button type="submit">Validate</button>
     </form>
-
+    {% if username%}
+        {% if match %}
+            <p>{{username}} is valid mail</p>
+        {% else%}
+            <p>{{username}} is invalid</p>
+        {% endif %}
+    {% endif%}
 </body>
 </html>
